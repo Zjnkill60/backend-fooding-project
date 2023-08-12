@@ -14,8 +14,8 @@ export class CommentsService {
 
   async create(CreateCommentDto: CreateCommentDto, user) {
 
-
     let comment = await this.commentModel.create({ ...CreateCommentDto, avatar: user.avatar, name: user.name })
+    await this.productService.updateCommentToProduct(CreateCommentDto.productID, comment._id)
     return {
       message: "Create a comments ! ",
       comment

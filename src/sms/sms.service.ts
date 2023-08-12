@@ -12,6 +12,7 @@ export class SmsService {
         let msg = ''
         let phoneNumberExist = await this.usersService.findOne(phoneNumber)
 
+        console.log(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN)
         if (phoneNumberExist) {
             throw new BadRequestException("Số điện thoại đã tồn tại !")
         } else {
