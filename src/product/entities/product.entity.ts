@@ -39,6 +39,9 @@ export class Product {
     comments: mongoose.Schema.Types.ObjectId[]
 
     @Prop()
+    isFlashsale: boolean
+
+    @Prop()
     priceFlashSale: number
 
     @Prop()

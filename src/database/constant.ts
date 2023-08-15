@@ -29,6 +29,30 @@ export const USER_ARRAY = [{
     avatar: "avatar-user.png"
 }]
 
+export const DISCOUNT_ARRAY = [{
+    codeSeller: "DISCOUNT15k",
+    title: "MÃ GIẢM GIÁ 15K",
+    description: "Áp Dụng Cho Đơn Hàng Có Giá Trị 200k",
+    category: "deals",
+    discount: "15000",
+    priceApplicable: 150000
+},
+{
+    codeSeller: "DISCOUNT25k",
+    title: "MÃ GIẢM GIÁ 25K",
+    description: "Áp Dụng Cho Đơn Hàng Có Giá Trị 350k",
+    category: "deals",
+    discount: "25000",
+    priceApplicable: 350000
+}, {
+    codeSeller: "DISCOUNT15k",
+    title: "MÃ GIẢM GIÁ 45K",
+    description: "Áp Dụng Cho Đơn Hàng Có Giá Trị 500k",
+    category: "deals",
+    discount: "45000",
+    priceApplicable: 500000
+}]
+
 export const PRODUCT_ARRAY = [{
     mainText: "Khoa Học - Khái Lược Những Tư Tưởng Lớn - Bìa Cứng (Tái Bản 2023)",
     author: "DK",

@@ -24,7 +24,7 @@ export class MailService {
             }
         })
 
-        console.log(orderItem)
+
         if (status == "Chờ xác nhận") {
             await this.mailService.sendMail({
                 to: `${order?.email}`,

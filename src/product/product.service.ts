@@ -61,21 +61,27 @@ export class ProductService {
   }
 
   async updateSoldProduct(listItem) {
-    console.log('listItem :', listItem)
+
     listItem?.map(async item => {
-      let quantity = +item.quantity
+      let quantityOrder = +item.quantity
       let prod = await this.productModel.findOne({ mainText: item.name }).exec()
-      await this.productModel.updateOne({ mainText: item.name }, { $set: { sold: prod.sold += (quantity) } })
+      if (prod.isFlashsale) {
+        await this.productModel.updateOne({ mainText: item.name }, { $set: { sold: prod.sold += (quantityOrder), soldFlashSale: prod.soldFlashSale += quantityOrder } })
+      } else {
+        await this.productModel.updateOne({ mainText: item.name }, { $set: { sold: prod.sold += (quantityOrder) } })
+      }
 
     });
 
   }
 
-  async updatePropFlashSale(idItem: string, priceSale: number, quantity: number) {
+  async updatePropFlashSale(idItem: string, priceSale: number, quantity: number, soldFlashSale: number) {
+    await this.productModel.updateOne({ _id: idItem }, { $set: { priceFlashSale: priceSale, quantity, soldFlashSale, isFlashsale: true } })
 
-    await this.productModel.updateOne({ _id: idItem }, { $set: { priceFlashSale: priceSale, quantity } })
+  }
 
-
+  async removeItemFromFlashsale(idItem: string) {
+    await this.productModel.updateOne({ _id: idItem }, { $set: { isFlashsale: false } })
 
   }
 

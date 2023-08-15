@@ -34,7 +34,7 @@ export class FlashsaleService {
 
   async createNewItem(id: string, updateFlashsaleDto: UpdateFlashsaleDto) {
     let modelFlashsale = await this.flashsaleModel.updateOne({ _id: id }, { $push: { itemFlashSale: updateFlashsaleDto.idItem } })
-    await this.productService.updatePropFlashSale(updateFlashsaleDto.idItem, updateFlashsaleDto.priceSale, updateFlashsaleDto.quantity)
+    await this.productService.updatePropFlashSale(updateFlashsaleDto.idItem, updateFlashsaleDto.priceSale, updateFlashsaleDto.quantity, updateFlashsaleDto.soldFlashsale)
     return {
       message: "update flashsale",
       modelFlashsale
@@ -42,7 +42,7 @@ export class FlashsaleService {
   }
 
   async update(updateFlashsaleDto: UpdateFlashsaleDto) {
-    let dataUpdate = await this.productService.updatePropFlashSale(updateFlashsaleDto.idItem, updateFlashsaleDto.priceSale, updateFlashsaleDto.quantity)
+    let dataUpdate = await this.productService.updatePropFlashSale(updateFlashsaleDto.idItem, updateFlashsaleDto.priceSale, updateFlashsaleDto.quantity, updateFlashsaleDto.soldFlashsale)
     return {
       message: "update flashsale",
       dataUpdate
@@ -58,9 +58,8 @@ export class FlashsaleService {
   }
 
   async remove(id: string, data: any) {
-    console.log(data.idItem)
     let modelFlashsale = await this.flashsaleModel.updateOne({ _id: id }, { $pull: { itemFlashSale: data.idItem } })
-
+    await this.productService.removeItemFromFlashsale(data?.idItem)
     return {
       messgae: "Delete a item",
       modelFlashsale

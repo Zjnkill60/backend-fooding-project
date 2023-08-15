@@ -44,7 +44,10 @@ export class CreateOrderDto {
     @IsNotEmpty()
     status: string
 
+    idPerson: string
+
     payments: string
+
     shipper: string
 
 }

@@ -11,8 +11,6 @@ export class Flashsale {
     @Prop()
     timer: string
 
-    @Prop()
-    isFinish: string
 
     @Prop({ type: mongoose.Schema.Types.Array, ref: Product.name })
     itemFlashSale: mongoose.Schema.Types.ObjectId[]

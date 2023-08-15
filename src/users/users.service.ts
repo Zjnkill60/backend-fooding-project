@@ -42,7 +42,7 @@ export class UsersService {
       return { user: userExist, exist: true }
     } else {
       if (google?.phoneNumber) {
-        let user = await this.userModel.create({ ...google, avatar: google.imageUrl, role: "USER" })
+        let user = await this.userModel.create({ ...google, avatar: 'avatar-user.png', role: "USER" })
         return { user, exist: false }
       } else {
         return null;
@@ -164,9 +164,9 @@ export class UsersService {
   }
 
 
-  updateOrderHistoryUser = async (phoneNumber: any, _id: any) => {
-    console.log('phoneNumber : ', phoneNumber)
-    await this.userModel.updateOne({ phoneNumber }, { $push: { orderHistory: _id } })
+  updateOrderHistoryUser = async (idPerson: any, idOrder: any) => {
+    console.log('idPerson : ', idPerson)
+    await this.userModel.updateOne({ _id: idPerson }, { $push: { orderHistory: idOrder } })
   }
 
   updateAdressUser = async (_id: any, data: any) => {

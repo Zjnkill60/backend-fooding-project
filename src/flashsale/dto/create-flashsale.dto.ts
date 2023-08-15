@@ -13,4 +13,7 @@ export class CreateFlashsaleDto {
     @IsNotEmpty()
     quantity: number
 
+    @IsNotEmpty()
+    soldFlashsale: number
+
 }

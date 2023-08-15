@@ -18,9 +18,11 @@ export class OrdersService {
 
   ) { }
   async create(createOrderDto: CreateOrderDto) {
-    let { phoneNumber, status, shipper } = createOrderDto
+    let { status, shipper, idPerson } = createOrderDto
     let order = await this.orderModel.create({ ...createOrderDto })
-    await this.userService.updateOrderHistoryUser(phoneNumber, order._id)
+    if (idPerson) {
+      await this.userService.updateOrderHistoryUser(idPerson, order._id)
+    }
     if (shipper != null) {
       await this.userService.updateItemShipper(shipper, order._id)
     }
