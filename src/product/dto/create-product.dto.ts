@@ -11,6 +11,9 @@ export class CreateProductDto {
     category: string
 
     @IsNotEmpty()
+    type: string
+
+    @IsNotEmpty()
     price: number
 
     @IsNotEmpty()

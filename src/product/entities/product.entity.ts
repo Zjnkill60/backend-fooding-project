@@ -14,8 +14,6 @@ export class Product {
     @Prop()
     mainText: string
 
-    @Prop()
-    category: string
 
     @Prop()
     price: number
@@ -38,6 +36,14 @@ export class Product {
     @Prop({ type: mongoose.Schema.Types.Array, ref: Comment.name })
     comments: mongoose.Schema.Types.ObjectId[]
 
+    //genres
+    @Prop()
+    category: string
+
+    @Prop()
+    type: string
+
+    //flashsale
     @Prop()
     isFlashsale: boolean
 
