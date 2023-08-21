@@ -28,6 +28,11 @@ export class Order {
     @Prop()
     address: string
 
+    // now or calendar
+    @Prop()
+    date: string
+
+
     //banking or cash
     @Prop()
     payments: string

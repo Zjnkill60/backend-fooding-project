@@ -75,7 +75,7 @@ export class OrdersService {
 
   async getLengthOrderForShipper(idShipper: string) {
 
-    let lengthRunning = (await this.orderModel.find({ status: "Xác nhận thành công", shipper: idShipper })).length
+    let lengthRunning = (await this.orderModel.find({ status: "Đang giao", shipper: idShipper })).length
     let lengthDone = (await this.orderModel.find({ status: "Hoàn tất", shipper: idShipper })).length
     let lengthReject = (await this.orderModel.find({ status: "Từ chối", shipper: idShipper })).length
     return {
