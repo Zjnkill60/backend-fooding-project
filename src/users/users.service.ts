@@ -151,8 +151,10 @@ export class UsersService {
       //@ts-ignore
       const { password, refreshToken, ...result } = user._doc;
       return result;
+    } else {
+      return null;
     }
-    return null;
+
 
 
 
